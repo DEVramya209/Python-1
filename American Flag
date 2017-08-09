@@ -1,0 +1,183 @@
+import turtle                                   ##obtaining the turtle
+rams = turtle.Turtle()
+
+def draw_ramsusflag(length, hgt):               
+    rams.pu()                                   
+    a = hgt*(7/13)                              
+    b = length*(2/6)                            
+    st = stripe_width = float(round(hgt/13,1))  
+
+    ## here we draw rectangle first.
+    rams.color(1,1,1)                           
+    rams.begin_fill()                           
+    rams.goto(-150,150)                         
+    rams.down()                                 
+    rams.backward(length)                       
+    rams.right(90)                              
+    rams.backward(hgt)                          
+    rams.right(90)                              
+    rams.backward(length)                       
+    rams.right(90)                              
+    rams.backward(hgt)                          
+    rams.end_fill()                             
+
+    ## strips for usflag
+    xcor1 = -150                                
+    ycor1 = 150-st                              
+    for z in range(13):                         
+        if z%2 == 0:
+            r = 1                               
+            s = t = 0
+        else:
+            r = s = t = 1                       
+        rams.pu()                               
+        rams.speed(500)
+        rams.goto(xcor1,ycor1)                  
+        rams.setheading(90)                     ##pointing to 90 degrees
+        rams.down()                            
+        rams.color(r,s,t)                       ##allocating colors
+        rams.begin_fill()                       ##begin to fill the colors
+        rams.forward(st)                        
+        rams.right(90)                          
+        rams.forward(length)                    
+        rams.right(90)                          
+        rams.forward(st)                        
+        rams.right(90)                          
+        rams.forward(length)                    
+        rams.end_fill()                         
+        ycor1 -= st                             
+
+    
+    xcor2 = -150+b                              ##assign the value to posx2
+    ycor2 = 150.5-a                              
+    rams.pu()                                   
+    rams.goto(xcor2,ycor2)                    
+    rams.down()                                 
+    rams.color(0,0,0)                           
+    rams.begin_fill()                           
+    rams.forward(b)                             
+    rams.right(90)                              
+    rams.forward(a)                             
+    rams.right(90)                              
+    rams.forward(b)                             
+    rams.right(90)                              
+    rams.forward(a)                             
+    rams.end_fill()                             
+    rams.pu()                                   
+
+
+    draw_bluecanton(107,150)                    
+    draw_star(length, hgt)                      
+
+def draw_star(i,r):                             
+    hgt = 10                                    
+    for i in range(150):                          
+        if i < 10:                              
+            row = 140                           
+            draw_starrows(row)                  
+
+        if i < 20:                              
+            row = row - hgt                     
+            draw_starrows(row, True)            
+
+        if i < 30:                              
+            row = row - hgt                     
+            draw_starrows(row)                  
+
+        if i < 40:                              
+            row = row - hgt                     
+            draw_starrows(row, True)            
+
+        if i < 50:                              
+            row = row - hgt                     
+            draw_starrows(row)                  
+
+        if i < 60:                              
+            row = row - hgt                     
+            draw_starrows(row, True)        
+        if i < 70:                              
+            row = row - hgt                     
+            draw_starrows(row)                  
+       
+        if i < 80:                              
+            row = row - hgt                     
+            draw_starrows(row, True)                   
+        if i < 90:                              
+            row = row - hgt                     
+            draw_starrows(row)                  
+
+           
+            rams.pu()                           
+            rams.setpos(+180,-100)              
+        break#3break statement
+
+       
+
+
+def draw_starrows(row, space = False):          
+    
+    x = -170                                    
+    y = 150                                     
+    stars = 6                                   
+
+    if space == True:                           
+        x += 10                                 
+        stars = 5                               
+
+    for z in range(stars):                      
+        x += 25                                 
+        rams.pu()                               
+        rams.color(1,1,1)                       
+        rams.speed(1000)
+        rams.goto(x,row)                      
+        rams.begin_fill()                       
+        rams.down()                             
+        
+        rams.forward(6.154)                     
+        rams.left(144)                          
+
+        rams.forward(6.154)                     
+        rams.left(144)                          
+
+        rams.forward(6.154)                     
+        rams.left(144)                          
+
+        rams.forward(6.154)                     
+        rams.left(144)                          
+
+        rams.forward(6.154)                     
+        rams.left(144)                          
+
+        rams.end_fill()                         
+
+def draw_bluecanton(length, hgt):               
+     rams.pu()                                  
+     #x = 0
+     #y = 150
+     a = hgt*(7/13)                             
+     b = length*(2/5)                           
+     st = stripe_width = float(round(hgt/13,1)) 
+
+     ## Here we draw the ramsusflag line for flag.
+     rams.color("blue")                         
+     rams.begin_fill()                          
+     rams.goto(0,150)                         
+     rams.down()                                
+     rams.forward(length)                        
+     rams.right(90)                             
+     rams.forward(hgt)                          
+     rams.right(90)                             
+     rams.forward(length)                       
+     rams.right(90)                             
+     rams.forward(hgt)                          
+     rams.end_fill()                            
+    
+     rams.pu()                                  
+
+def draw_flag():                                
+    rams.shape("triangle")
+    hgt = 200                                   
+    draw_ramsusflag(hgt*1.99, hgt)              
+
+draw_flag()                                     
+
